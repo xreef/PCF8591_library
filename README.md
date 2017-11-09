@@ -20,7 +20,7 @@ for esp8266 if you want specify SDA e SCL pin use this:
 
 then IC as you can see in the image have 4 analog input and 1 analog output:
 
-![PCF8591 schema](https://i0.wp.com/henrysbench.capnfatz.com/wp-content/uploads/2015/09/PCF8591-Pin-Outs.png)
+![PCF8591 schema](https://github.com/xreef/PCF8591_library/blob/master/resources/PCF8591-Pin-Outs.png)
 
 So to read all analog input in one trasmission you can do (the value is from 0 to 255):
 ```cpp
@@ -43,7 +43,7 @@ if you want read a single analog input or channel:
 
 This IC have multiple type of read and you can use Analog input or analog channel (when you use single read analog input and channel are the same:
 
-![Channel selection](channel_selection.png)	
+![Channel selection](https://github.com/xreef/PCF8591_library/blob/master/resources/channel_selection.PNG)	
 
 For example to read the value of channel 0 in Two differential input you must do:
 ```cpp
@@ -76,4 +76,6 @@ An examples is:
 	Serial.println(ana0V);
 ```
 
+For the examples I use this wire schema on breadboard:
+![Breadboard](https://github.com/xreef/PCF8591_library/blob/master/resources/simpleschema_bb.png)
 
