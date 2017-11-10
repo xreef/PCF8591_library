@@ -16,7 +16,7 @@
 #endif
 
 // Uncomment to enable printing out nice debug messages.
-#define PCF8591_DEBUG
+// #define PCF8591_DEBUG
 
 // Define where debug output will be printed.
 #define DEBUG_PRINTER Serial

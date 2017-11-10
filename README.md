@@ -2,7 +2,7 @@ Library to use i2c analog IC with arduino and esp8266. Can read analog value and
 
 Tutorial: 
 
-To download. click the DOWNLOADS button in the top right corner, rename the uncompressed folder DHT12. Check that the DHT folder contains `PCF8591\\.cpp` and `PCF8591.h`. Place the DHT library folder your `<arduinosketchfolder>/libraries/` folder. You may need to create the libraries subfolder if its your first library. Restart the IDE.
+To download. click the DOWNLOADS button in the top right corner, rename the uncompressed folder PCF8591. Check that the PCF8591 folder contains `PCF8591\\.cpp` and `PCF8591.h`. Place the DHT library folder your `<arduinosketchfolder>/libraries/` folder. You may need to create the libraries subfolder if its your first library. Restart the IDE.
 
 # Reef complete PCF8591 Analog input and analog output to digital converter with i2c bus.
 I try to simplify the use of this IC, with a minimal set of operation.
