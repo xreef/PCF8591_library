@@ -32,10 +32,10 @@
 
 #include <math.h>
 
-#define ANA0 B00000000
-#define ANA1 B00000001
-#define ANA2 B00000010
-#define ANA3 B00000011
+#define AIN0 B00000000
+#define AIN1 B00000001
+#define AIN2 B00000010
+#define AIN3 B00000011
 
 #define CHANNEL0 B00000000
 #define CHANNEL1 B00000001
@@ -57,10 +57,10 @@
 class PCF8591 {
 public:
 	struct AnalogInput {
-	   uint8_t ana0;
-	   uint8_t ana1;
-	   uint8_t ana2;
-	   uint8_t ana3;
+	   uint8_t ain0;
+	   uint8_t ain1;
+	   uint8_t ain2;
+	   uint8_t ain3;
 	} analogInput;
 
 	PCF8591(uint8_t address);

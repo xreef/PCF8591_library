@@ -45,7 +45,7 @@ void PCF8591::begin(){
  * 	TWO_DIFFERENTIAL_INPUT
  * @return
  */
-struct PCF8591::AnalogInput PCF8591::analogReadAll(byte readType = SINGLE_ENDED_INPUT){
+struct PCF8591::AnalogInput PCF8591::analogReadAll(byte readType){
 	DEBUG_PRINTLN("Begin trasmission");
 	Wire.beginTransmission(_address); // wake up PCF8591
 
@@ -58,11 +58,11 @@ struct PCF8591::AnalogInput PCF8591::analogReadAll(byte readType = SINGLE_ENDED_
 	DEBUG_PRINTLN("Request response");
 	Wire.requestFrom(_address, (uint8_t)5);
 
-	uint8_t control =Wire.read();
-	analogInput.ana0=Wire.read();
-	analogInput.ana1=Wire.read();
-	analogInput.ana2=Wire.read();
-	analogInput.ana3=Wire.read();
+	/*uint8_t control =*/Wire.read();
+	analogInput.ain0=Wire.read();
+	analogInput.ain1=Wire.read();
+	analogInput.ain2=Wire.read();
+	analogInput.ain3=Wire.read();
 
 	return analogInput;
 };
@@ -77,7 +77,7 @@ struct PCF8591::AnalogInput PCF8591::analogReadAll(byte readType = SINGLE_ENDED_
  * 	TWO_DIFFERENTIAL_INPUT
  * @return
  */
-uint8_t PCF8591::analogRead(uint8_t channel, byte readType = SINGLE_ENDED_INPUT){
+uint8_t PCF8591::analogRead(uint8_t channel, byte readType){
 	DEBUG_PRINTLN("Begin trasmission");
 	Wire.beginTransmission(_address); // wake up PCF8591
 
@@ -89,7 +89,7 @@ uint8_t PCF8591::analogRead(uint8_t channel, byte readType = SINGLE_ENDED_INPUT)
 	Wire.endTransmission(); // end tranmission
 	DEBUG_PRINTLN("Request response");
 	Wire.requestFrom(_address, (uint8_t)2);
-	uint8_t control = Wire.read();
+	/*uint8_t control = */Wire.read();
 	uint8_t ana=Wire.read();
 
 	return ana;
@@ -102,9 +102,9 @@ uint8_t PCF8591::analogRead(uint8_t channel, byte readType = SINGLE_ENDED_INPUT)
  * @param referenceVoltage if microcontrollerReferenceVoltage false take this value
  * @return
  */
-float PCF8591::voltageRead(uint8_t analogPin, bool microcontrollerReferenceVoltage = true, float referenceVoltage = 5.0){
+float PCF8591::voltageRead(uint8_t analogPin, bool microcontrollerReferenceVoltage, float referenceVoltage){
 	float voltageRef = referenceVoltage;
-	if (microcontrollerReferenceVoltage) voltageRef = PCF8591::readVcc()/1000;
+	if (microcontrollerReferenceVoltage) voltageRef = PCF8591::readVcc()/1000.0;
 	float ana = PCF8591::analogRead(analogPin);
 	return ana*voltageRef/255;
 };
@@ -114,8 +114,8 @@ float PCF8591::voltageRead(uint8_t analogPin, bool microcontrollerReferenceVolta
  * @param microcontrollerReferenceVoltage get voltage from microcontroller voltage (only AVR no esp8266 for esp 3.3v fixed)
  * @param referenceVoltage if microcontrollerReferenceVoltage false take this value
  */
-void PCF8591::voltageWrite(float value, bool microcontrollerReferenceVoltage = true, float referenceVoltage = 5.0){
-	if (microcontrollerReferenceVoltage) referenceVoltage = PCF8591::readVcc()/1000;
+void PCF8591::voltageWrite(float value, bool microcontrollerReferenceVoltage, float referenceVoltage){
+	if (microcontrollerReferenceVoltage) referenceVoltage = PCF8591::readVcc()/1000.0;
 	uint8_t ana = value*255/referenceVoltage;
 	PCF8591::analogWrite(ana);
 };

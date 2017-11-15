@@ -13,30 +13,30 @@ void setup()
 void loop()
 {
 	PCF8591::AnalogInput ai = pcf8591.analogReadAll();
-	Serial.print(ai.ana0);
+	Serial.print(ai.ain0);
 	Serial.print(" - ");
-	Serial.print(ai.ana1);
+	Serial.print(ai.ain1);
 	Serial.print(" - ");
-	Serial.print(ai.ana2);
+	Serial.print(ai.ain2);
 	Serial.print(" - ");
-	Serial.println(ai.ana3);
+	Serial.println(ai.ain3);
 
 	delay(3000);
 
-	int ana = pcf8591.analogRead(ANA0);
-	Serial.print("ANA0 --> ");
+	int ana = pcf8591.analogRead(AIN0);
+	Serial.print("AIN0 --> ");
 	Serial.println(ana);
 
-	ana = pcf8591.analogRead(ANA1);
-	Serial.print("ANA1 --> ");
+	ana = pcf8591.analogRead(AIN1);
+	Serial.print("AIN1 --> ");
 	Serial.println(ana);
 
-	ana = pcf8591.analogRead(ANA2);
-	Serial.print("ANA2 --> ");
+	ana = pcf8591.analogRead(AIN2);
+	Serial.print("AIN2 --> ");
 	Serial.println(ana);
 
-	ana = pcf8591.analogRead(ANA3);
-	Serial.print("ANA3 --> ");
+	ana = pcf8591.analogRead(AIN3);
+	Serial.print("AIN3 --> ");
 	Serial.println(ana);
 	delay(3000);
 

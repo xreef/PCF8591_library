@@ -25,20 +25,20 @@ then IC as you can see in the image have 4 analog input and 1 analog output:
 So to read all analog input in one trasmission you can do (the value is from 0 to 255):
 ```cpp
 	PCF8591::AnalogInput ai = pcf8591.analogReadAll();
-	Serial.print(ai.ana0);
+	Serial.print(ai.ain0);
 	Serial.print(" - ");
-	Serial.print(ai.ana1);
+	Serial.print(ai.ain1);
 	Serial.print(" - ");
-	Serial.print(ai.ana2);
+	Serial.print(ai.ain2);
 	Serial.print(" - ");
-	Serial.println(ai.ana3);
+	Serial.println(ai.ain3);
 ```
 
 
 if you want read a single analog input or channel:
 
 ```cpp
-	int ana = pcf8591.analogRead(ANA0); // read analog 0
+	int ana = pcf8591.analogRead(AIN0); // read analog 0
 ```
 
 This IC have multiple type of read and you can use Analog input or analog channel (when you use single read analog input and channel are the same:
@@ -72,7 +72,7 @@ An examples is:
 	pcf8591.voltageWrite(2.7); // 2.7Volts output
 	delay(3000);
 
-	float ana0V = pcf8591.voltageRead(ANA0); // Read voltage from analog 0
+	float ana0V = pcf8591.voltageRead(AIN0); // Read voltage from analog 0
 	Serial.println(ana0V);
 ```
 
