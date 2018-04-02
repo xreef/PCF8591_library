@@ -158,7 +158,9 @@ long PCF8591::readVcc(void) {
 
 		long result = (high << 8) | low;
 
-		result = 1125300L / result; // Calculate Vcc (in mV); 1125300 = 1.1*1023*1000
+		  result = 1083630L / result; // Calculate Vcc (in mV); 1125300 = 1.1*1023*1000
+		  // scale_constant = internal1.1Ref * 1023 * 1000
+		  // internal1.1Ref = 1.1 * Vcc1 (per voltmeter) / Vcc2 (per readVcc() function)
 		return result; // Vcc in millivolts
 	#else
 //		float vdd = readVcc(); //  ESP.getVdd33(); //ESP.getVcc();
