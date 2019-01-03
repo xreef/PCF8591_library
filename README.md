@@ -1,3 +1,5 @@
+You can find updated version of documentation on my site​ [PCF8591](https://www.mischianti.org/2019/01/03/pcf8591-i2c-analog-i-o-expander/)
+
 Library to use i2c analog IC with arduino and esp8266. Can read analog value and write analog value with only 2 wire (perfect for ESP-01).
 
 Tutorial: 
