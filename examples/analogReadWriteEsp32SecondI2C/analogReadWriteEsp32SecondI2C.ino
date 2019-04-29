@@ -11,20 +11,30 @@
  * A0         ----- GRD
  * A1         ----- GRD
  * A2         ----- GRD
- * SDA        ----- A4
- * SCL        ----- A5
+ * SDA        ----- 21
+ * SCL        ----- 22
  *
  *
  */
 #include "Arduino.h"
+
 #include "PCF8591.h"
 #define PCF8591_I2C_ADDRESS 0x48
 
-PCF8591 pcf8591(PCF8591_I2C_ADDRESS);
+// Instantiate Wire for generic use at 400kHz
+TwoWire I2Cone = TwoWire(0);
+// Instantiate Wire for generic use at 100kHz
+TwoWire I2Ctwo = TwoWire(1);
+
+// Set i2c address
+//PCF8591 pcf8591(&I2Ctwo, PCF8591_I2C_ADDRESS);
+ PCF8591 pcf8591(&I2Ctwo, 0x20, 21, 22);
 
 void setup()
 {
 	Serial.begin(115200);
+	I2Cone.begin(16,17,400000); // SDA pin 16, SCL pin 17, 400kHz frequency
+
 	pcf8591.begin();
 }
 

@@ -1,3 +1,21 @@
+/*
+ * 	PCF8591 Analog Port Expand
+ *  Read write voltage on pins
+ *
+ *  by Mischianti Renzo <http://www.mischianti.org>
+ *
+ *  https://www.mischianti.org/2019/01/03/pcf8591-i2c-analog-i-o-expander/
+ *
+ *
+ * PCF8574    ----- Esp32
+ * A0         ----- GRD
+ * A1         ----- GRD
+ * A2         ----- GRD
+ * SDA        ----- A4
+ * SCL        ----- A5
+ *
+ *
+ */
 #include "Arduino.h"
 #include "PCF8591.h"
 #define PCF8591_I2C_ADDRESS 0x48
