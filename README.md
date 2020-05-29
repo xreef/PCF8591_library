@@ -1,3 +1,15 @@
+<div>
+<a href="https://www.mischianti.org/forum/forum/xreef-pcf8591_library/"><img
+  src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/mischaintiForumSupport.png" alt="Support forum e32 English"
+   align="right"></a>
+</div>
+<div>
+<a href="https://www.mischianti.org/forum/forum/xreef-pcf8591_library-2/"><img
+  src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportoForum.png" alt="Forum supporto e32 italiano"
+  align="right"></a>
+</div>
+
+
 You can find updated version of documentation on my site​ [PCF8591](https://www.mischianti.org/2019/01/03/pcf8591-i2c-analog-i-o-expander/)
 
 Library to use i2c analog IC with arduino and esp8266. Can read analog value and write analog value with only 2 wire (perfect for ESP-01).
