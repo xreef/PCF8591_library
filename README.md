@@ -1,10 +1,10 @@
 <div>
-<a href="https://www.mischianti.org/forum/forum/xreef-pcf8591_library/"><img
+<a href="https://www.mischianti.org/forum/forum/library-to-use-pcf8591-an-i2c-analog-ic-with-arduino-esp32-and-esp8266/"><img
   src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/mischaintiForumSupport.png" alt="Support forum e32 English"
    align="right"></a>
 </div>
 <div>
-<a href="https://www.mischianti.org/forum/forum/xreef-pcf8591_library-2/"><img
+<a href="https://www.mischianti.org/forum/forum/libreria-per-lintegrato-pcf8591-un-i2c-expander-analogico-arduino-esp8266-e-esp32/"><img
   src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportoForum.png" alt="Forum supporto e32 italiano"
   align="right"></a>
 </div>
