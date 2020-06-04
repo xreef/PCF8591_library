@@ -1,10 +1,10 @@
 <div>
-<a href="https://www.mischianti.org/forum/forum/library-to-use-pcf8591-an-i2c-analog-ic-with-arduino-esp32-and-esp8266/"><img
+<a href="https://www.mischianti.org/forums/forum/english-support-forum/mischiantis-libraries/pcf8591-i2c-analog-expander/"><img
   src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportForumEnglish.png" alt="Support forum pcf8591 English"
    align="right"></a>
 </div>
 <div>
-<a href="https://www.mischianti.org/forum/forum/libreria-per-lintegrato-pcf8591-un-i2c-expander-analogico-arduino-esp8266-e-esp32/"><img
+<a href="https://www.mischianti.org/forums/forum/forum-di-supporto-in-italiano/le-librerie-di-mischianti/pcf8591-expander-analogico-i2c/"><img
   src="https://github.com/xreef/LoRa_E32_Series_Library/raw/master/resources/buttonSupportForumItaliano.png" alt="Forum supporto pcf8591 italiano"
   align="right"></a>
 </div>
