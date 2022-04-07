@@ -17,6 +17,8 @@ You can find updated version of documentation on my site​ [PCF8591](https://ww
 
 Library to use i2c analog IC with arduino and esp8266. Can read analog value and write analog value with only 2 wire (perfect for ESP-01).
 
+06/04/2022: v1.0.2 Fix package size
+
 Tutorial: 
 
 To download. click the DOWNLOADS button in the top right corner, rename the uncompressed folder PCF8591. Check that the PCF8591 folder contains `PCF8591\\.cpp` and `PCF8591.h`. Place the DHT library folder your `<arduinosketchfolder>/libraries/` folder. You may need to create the libraries subfolder if its your first library. Restart the IDE.
