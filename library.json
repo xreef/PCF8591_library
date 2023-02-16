@@ -1,0 +1,24 @@
+{
+  "name": "PCF8591 library",
+  "version": "1.1.0",
+  "keywords": "analog, digital, i2c, encoder, expander, pcf8591, pcf8591a, esp32, esp8266, stm32, SAMD, Arduino, wire, Raspberry, rp2040",
+  "description": "PCF8591 library. i2c digital expander for i2c digital expander for Arduino, Raspberry Pi Pico and rp2040 boards, esp32, SMT32 and ESP8266. Can read write digital values with only 2 wire. Very simple to use and encoder support.",
+  "homepage": "https://www.mischianti.org/2019/01/03/pcf8591-i2c-analog-i-o-expander/",
+  "authors":
+  [
+    {
+      "name": "Renzo Mischianti",
+      "email": "renzo.mischianti@gmail.com",
+      "maintainer": true,
+      "url": "https://www.mischianti.org"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xreef/PCF8591_library"
+  },
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "headers": ["PCF8591.h, PCF8591_library.h"]
+}

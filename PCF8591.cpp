@@ -28,6 +28,7 @@
 #include "PCF8591.h"
 #include "Wire.h"
 
+
 /**
  * Constructor
  * @param address: i2c address
@@ -37,14 +38,15 @@ PCF8591::PCF8591(uint8_t address){
 
 	_address = address;
 };
-#if !defined(__AVR) && !defined(__STM32F1__)
+
+#if !defined(__AVR) && !defined(ARDUINO_ARCH_SAMD) && !defined(TEENSYDUINO)
 	/**
-	 *
+	 * Constructor
 	 * @param address: i2c address
 	 * @param sda: sda pin
 	 * @param scl: scl pin
 	 */
-	PCF8591::PCF8591(uint8_t address, uint8_t sda, uint8_t scl){
+PCF8591::PCF8591(uint8_t address, int sda, int scl){
 		_wire = &Wire;
 
 		_address = address;
@@ -52,46 +54,114 @@ PCF8591::PCF8591(uint8_t address){
 		_scl = scl;
 	};
 
-	#ifdef ESP32
-		/**
-		 * Constructor
-		 * @param address: i2c address
-		 */
-		PCF8591::PCF8591(TwoWire *pWire, uint8_t address){
-			_wire = pWire;
+#endif
 
-			_address = address;
-		};
-		/**
-		 *
-		 * @param address: i2c address
-		 * @param sda: sda pin
-		 * @param scl: scl pin
-		 */
-		PCF8591::PCF8591(TwoWire *pWire, uint8_t address, uint8_t sda, uint8_t scl){
-			_wire = pWire;
+#if defined(ESP32) || defined(ARDUINO_ARCH_SAMD)|| defined(ARDUINO_ARCH_RP2040)  || defined(ARDUINO_ARCH_STM32)
+	/**
+	 * Constructor
+	 * @param address: i2c address
+	 */
+	PCF8591::PCF8591(TwoWire *pWire, uint8_t address){
+		_wire = pWire;
 
-			_address = address;
-			_sda = sda;
-			_scl = scl;
-		};
-
-	#endif
+		_address = address;
+	};
 
 #endif
+#if defined(ESP32)
+	/**
+	 * Constructor
+	 * @param address: i2c address
+	 * @param sda: sda pin
+	 * @param scl: scl pin
+	 */
+	PCF8591::PCF8591(TwoWire *pWire, uint8_t address, int sda, int scl){
+		_wire = pWire;
+
+		_address = address;
+		_sda = sda;
+		_scl = scl;
+	};
+
+#endif
+
+
+
+
+///**
+// * Constructor
+// * @param address: i2c address
+// */
+//PCF8591::PCF8591(uint8_t address){
+//	_wire = &Wire;
+//
+//	_address = address;
+//};
+//#if !defined(__AVR) && !defined(__STM32F1__)
+//	/**
+//	 *
+//	 * @param address: i2c address
+//	 * @param sda: sda pin
+//	 * @param scl: scl pin
+//	 */
+//	PCF8591::PCF8591(uint8_t address, uint8_t sda, uint8_t scl){
+//		_wire = &Wire;
+//
+//		_address = address;
+//		_sda = sda;
+//		_scl = scl;
+//	};
+//
+//	#ifdef ESP32
+//		/**
+//		 * Constructor
+//		 * @param address: i2c address
+//		 */
+//		PCF8591::PCF8591(TwoWire *pWire, uint8_t address){
+//			_wire = pWire;
+//
+//			_address = address;
+//		};
+//		/**
+//		 *
+//		 * @param address: i2c address
+//		 * @param sda: sda pin
+//		 * @param scl: scl pin
+//		 */
+//		PCF8591::PCF8591(TwoWire *pWire, uint8_t address, uint8_t sda, uint8_t scl){
+//			_wire = pWire;
+//
+//			_address = address;
+//			_sda = sda;
+//			_scl = scl;
+//		};
+//
+//	#endif
+//
+//#endif
 
 /**
  * wake up i2c controller
  */
 void PCF8591::begin(){
-	#ifndef __AVR
-		_wire->begin(_sda, _scl);
-	#else
-	//			Default pin for AVR some problem on software emulation
-	//			#define SCL_PIN _scl
-	// 			#define SDA_PIN _sda
-		_wire->begin();
-	#endif
+#if !defined(__AVR)  && !defined(ARDUINO_ARCH_SAMD)  && !defined(TEENSYDUINO)
+	DEBUG_PRINT(F("begin(sda, scl) -> "));DEBUG_PRINT(_sda);DEBUG_PRINT(F(" "));DEBUG_PRINTLN(_scl);
+//		_wire->begin(_sda, _scl);
+#ifdef ARDUINO_ARCH_STM32
+	_wire->begin((uint32_t)_sda, (uint32_t)_scl);
+#elif defined(ARDUINO_ARCH_RP2040)
+	_wire->setSCL(_scl);
+	_wire->setSDA(_sda);
+	_wire->begin();
+#else
+	_wire->begin((int)_sda, (int)_scl);
+#endif
+#else
+//			Default pin for AVR some problem on software emulation
+//			#define SCL_PIN _scl
+// 			#define SDA_PIN _sda
+	_wire->begin();
+#endif
 }
 
 /**

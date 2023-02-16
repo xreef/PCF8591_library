@@ -53,27 +53,27 @@
 
 #include <math.h>
 
-#define AIN0 B00000000
-#define AIN1 B00000001
-#define AIN2 B00000010
-#define AIN3 B00000011
+#define AIN0 0b00000000
+#define AIN1 0b00000001
+#define AIN2 0b00000010
+#define AIN3 0b00000011
 
-#define CHANNEL0 B00000000
-#define CHANNEL1 B00000001
-#define CHANNEL2 B00000010
-#define CHANNEL3 B00000011
+#define CHANNEL0 0b00000000
+#define CHANNEL1 0b00000001
+#define CHANNEL2 0b00000010
+#define CHANNEL3 0b00000011
 
-#define AUTOINCREMENT_READ B00000100
+#define AUTOINCREMENT_READ 0b00000100
 
-#define SINGLE_ENDED_INPUT B00000000
-#define TREE_DIFFERENTIAL_INPUT B00010000
-#define TWO_SINGLE_ONE_DIFFERENTIAL_INPUT B00100000
-#define TWO_DIFFERENTIAL_INPUT B00110000
+#define SINGLE_ENDED_INPUT 		0b00000000
+#define TREE_DIFFERENTIAL_INPUT 0b00010000
+#define TWO_SINGLE_ONE_DIFFERENTIAL_INPUT 0b00100000
+#define TWO_DIFFERENTIAL_INPUT 0b00110000
 
-#define ENABLE_OUTPUT B01000000
-#define DISABLE_OUTPUT B01000000
+#define ENABLE_OUTPUT 0b01000000
+#define DISABLE_OUTPUT 0b01000000
 
-#define OUTPUT_MASK B01000000
+#define OUTPUT_MASK 0b01000000
 
 class PCF8591 {
 public:
@@ -86,15 +86,31 @@ public:
 
 	PCF8591(uint8_t address);
 
-#if !defined(__AVR) && !defined(__STM32F1__)
-	PCF8591(uint8_t address, uint8_t sda, uint8_t scl);
-
-	#ifdef ESP32
-		PCF8591(TwoWire *pWire, uint8_t address);
-		PCF8591(TwoWire *pWire, uint8_t address, uint8_t sda, uint8_t scl);
-	#endif
-
+#if !defined(__AVR) && !defined(ARDUINO_ARCH_SAMD) && !defined(TEENSYDUINO)
+	PCF8591(uint8_t address, int sda, int scl);
 #endif
+
+#if defined(ESP32) || defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_STM32)
+	///// changes for second i2c bus
+	PCF8591(TwoWire *pWire, uint8_t address);
+#endif
+#if defined(ESP32)
+	PCF8591(TwoWire *pWire, uint8_t address, int sda, int scl);
+#endif
+
+
+
+//	PCF8591(uint8_t address);
+//
+//#if !defined(__AVR) && !defined(__STM32F1__)
+//	PCF8591(uint8_t address, uint8_t sda, uint8_t scl);
+//
+//	#ifdef ESP32
+//		PCF8591(TwoWire *pWire, uint8_t address);
+//		PCF8591(TwoWire *pWire, uint8_t address, uint8_t sda, uint8_t scl);
+//	#endif
+//
+//#endif
 
 	void begin(void);
 	struct AnalogInput analogReadAll(byte readType = SINGLE_ENDED_INPUT);
