@@ -39,7 +39,7 @@ PCF8591::PCF8591(uint8_t address){
 	_address = address;
 };
 
-#if !defined(__AVR) && !defined(ARDUINO_ARCH_SAMD) && !defined(TEENSYDUINO)
+#if !defined(__AVR) && !defined(ARDUINO_ARCH_SAMD) && !defined(TEENSYDUINO) && !defined(ARDUINO_ARCH_RENESAS)
 	/**
 	 * Constructor
 	 * @param address: i2c address
@@ -56,7 +56,7 @@ PCF8591::PCF8591(uint8_t address, int sda, int scl){
 
 #endif
 
-#if defined(ESP32) || defined(ARDUINO_ARCH_SAMD)|| defined(ARDUINO_ARCH_RP2040)  || defined(ARDUINO_ARCH_STM32)
+#if defined(ESP32) || defined(ARDUINO_ARCH_SAMD)|| defined(ARDUINO_ARCH_RP2040)  || defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_RENESAS)
 	/**
 	 * Constructor
 	 * @param address: i2c address
@@ -144,7 +144,7 @@ PCF8591::PCF8591(uint8_t address, int sda, int scl){
  * wake up i2c controller
  */
 void PCF8591::begin(){
-#if !defined(__AVR)  && !defined(ARDUINO_ARCH_SAMD)  && !defined(TEENSYDUINO)
+#if !defined(__AVR)  && !defined(ARDUINO_ARCH_SAMD)  && !defined(TEENSYDUINO) && !defined(ARDUINO_ARCH_RENESAS)
 	DEBUG_PRINT(F("begin(sda, scl) -> "));DEBUG_PRINT(_sda);DEBUG_PRINT(F(" "));DEBUG_PRINTLN(_scl);
 //		_wire->begin(_sda, _scl);
 #ifdef ARDUINO_ARCH_STM32
