@@ -140,6 +140,11 @@ PCF8591::PCF8591(uint8_t address, int sda, int scl){
 //
 //#endif
 
+void PCF8591::begin(uint8_t address){
+	_address = address;
+	return PCF8591::begin();
+}
+
 /**
  * wake up i2c controller
  */

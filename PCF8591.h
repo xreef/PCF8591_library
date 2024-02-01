@@ -112,14 +112,14 @@ public:
 //
 //#endif
 
-	void begin(void);
+	void begin();
+	void begin(uint8_t address);
 	struct AnalogInput analogReadAll(byte readType = SINGLE_ENDED_INPUT);
 	uint8_t analogRead(uint8_t channel, byte readType = SINGLE_ENDED_INPUT);
 	void analogWrite(uint8_t value);
 
 	void voltageWrite(float value, bool microcontrollerReferenceVoltage = true, float referenceVoltage = 5.0);
 	float voltageRead(uint8_t analogPin, bool microcontrollerReferenceVoltage = true, float referenceVoltage = 5.0);
-
 private:
 	TwoWire *_wire;
 

@@ -17,6 +17,7 @@ You can find updated version of documentation on my site​ [PCF8591](https://ww
 
 Library to use i2c analog IC with arduino and esp8266. Can read analog value and write analog value with only 2 wire (perfect for ESP-01).
 
+ - 01/02/2024: v1.1.2 Add the possibility to insert address at begin() function 
  - 10/07/2023: v1.1.1 Add support for Arduino UNO R4 
  - 16/02/2023: v1.1.0 
     - Fix STM32 support and add support for Raspberry Pi Pico and other rp2040 boards
