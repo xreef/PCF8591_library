@@ -65,7 +65,7 @@
 
 #define AUTOINCREMENT_READ 0b00000100
 
-#define SINGLE_ENDED_INPUT 		0b00000000
+#define SINGLE_ENDED_INPUT 	0b00000000
 #define TREE_DIFFERENTIAL_INPUT 0b00010000
 #define TWO_SINGLE_ONE_DIFFERENTIAL_INPUT 0b00100000
 #define TWO_DIFFERENTIAL_INPUT 0b00110000
@@ -97,20 +97,6 @@ public:
 #if defined(ESP32)
 	PCF8591(TwoWire *pWire, uint8_t address, int sda, int scl);
 #endif
-
-
-
-//	PCF8591(uint8_t address);
-//
-//#if !defined(__AVR) && !defined(__STM32F1__)
-//	PCF8591(uint8_t address, uint8_t sda, uint8_t scl);
-//
-//	#ifdef ESP32
-//		PCF8591(TwoWire *pWire, uint8_t address);
-//		PCF8591(TwoWire *pWire, uint8_t address, uint8_t sda, uint8_t scl);
-//	#endif
-//
-//#endif
 
 	void begin();
 	void begin(uint8_t address);
